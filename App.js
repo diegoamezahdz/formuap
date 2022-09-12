@@ -1,43 +1,38 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
 import image from './assets/mu4.png';
-
+import { Entypo, MaterialIcons, Ionicons, MaterialCommunityIcons, } from '@expo/vector-icons';
 export default function App() {
   return (
 
     <View style={styles.container}>
-      <Text style={styles.subtitule}>Ingresa los datos de tu rancho</Text>
+      <Text style={styles.subtitule}>Ingresa los datos de tu Finca</Text>
 
       <Image
         source={image}
         style={styles.image}
       />
 
-      <TextInput
-        placeholder="Nombre de la finca"
-        style={styles.textInput}
-      />
-      
-      <TextInput
-        placeholder='Tipo de proposito'
-        style={styles.textInput}
-      />
-      <View style={{ flexDirection: 'row', width: '47.6%', justifyContent: 'center' }}>
-        <TextInput
-          placeholder='Producción'
-          style={styles.textInput}
-        />
-
-        <TextInput
-          placeholder='Proposito'
-          style={styles.textInput}
-        />
+      <View style={styles.inputBoxCont}>
+        <MaterialIcons name="house-siding" size={24} style={styles.iconStyle} />
+        <TextInput style={styles.inputBox} placeholder="Nombre de la finca" />
       </View>
 
-      <TextInput
-        placeholder='Espacio del terreno'
-        style={styles.textInput}
-      />
+      <View style={{ flexDirection: 'row', width: '47.6%', justifyContent: 'center' }}>
+        <View style={styles.inputBoxCont}>
+          <MaterialCommunityIcons name="food-steak" size={24} style={styles.iconStyle} />
+          <TextInput style={styles.inputBox} placeholder="Propósito" />
+        </View>
+        <View style={styles.inputBoxCont}>
+          <Ionicons name="water" size={24} style={styles.iconStyle} />
+          <TextInput style={styles.inputBox} placeholder="Producción" />
+        </View>
+      </View>
+    
+      <View style={styles.inputBoxCont}>
+        <MaterialCommunityIcons name="social-distance-2-meters" size={24} style={styles.iconStyle} />
+        <TextInput style={styles.inputBox} placeholder="Espacio del terreno" />
+      </View>
 
       <TouchableOpacity
         style={styles.buttont}>
@@ -45,38 +40,33 @@ export default function App() {
         <Text style={styles.textButton}>Selecciona una imagen</Text>
       </TouchableOpacity>
 
-      <Text style={styles.subtitule2}>Ubicación</Text>
+      <View style={styles.textInput}>
+      <Entypo name="location" size={24} style={styles.iconStyle} />
+        <Text style={styles.subtitule2} >Ubicación</Text>
+      </View>
+
 
       <View style={{ flexDirection: 'row', width: '47.6%', justifyContent: 'center' }}>
-        <TextInput
-          placeholder='Pais'
-          style={styles.textInput}
-        />
-
-        <TextInput
-          placeholder='Estado'
-          style={styles.textInput}
-        />
+        <View style={styles.inputBoxCont}>
+          <TextInput style={styles.inputBox} placeholder="País" />
+        </View>
+        <View style={styles.inputBoxCont}>
+          <TextInput style={styles.inputBox} placeholder="Estado" />
+        </View>
       </View>
 
       <View style={{ flexDirection: 'row', width: '47.6%', justifyContent: 'center' }}>
-        <TextInput
-          placeholder='Municipio'
-          style={styles.textInput}
-        />
-
-        <TextInput
-          placeholder='Codigo Postal'
-          style={styles.textInput}
-        />
+        <View style={styles.inputBoxCont}>
+          <TextInput style={styles.inputBox} placeholder="Municipio" />
+        </View>
+        <View style={styles.inputBoxCont}>
+          <TextInput style={styles.inputBox} placeholder="Código postal" />
+        </View>
       </View>
 
-      <TextInput
-        placeholder='Geolocalización'
-        style={styles.textInput}
-      />
-
-
+      <View style={styles.inputBoxCont}>
+        <TextInput style={styles.inputBox} placeholder="Geolocalización" />
+      </View>
 
       <TouchableOpacity
         style={styles.button}>
@@ -84,7 +74,7 @@ export default function App() {
         <Text style={styles.textButton}>Crear Finca</Text>
       </TouchableOpacity>
 
-      
+
       <StatusBar style="auto" />
     </View>
   );
@@ -98,6 +88,30 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  // aqui empeza input con icons
+  inputBoxCont: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderColor: '#936037',
+    borderRadius: 4,
+    width: '90%',
+    marginTop: 15,
+    paddingHorizontal: 3,
+    height: 40,
+    marginRight: '4%',
+    marginLeft: '4%',
+
+  },
+  inputBox: {
+    marginHorizontal: 5,
+    flex: 1
+  },
+  iconStyle: {
+    color: '#936037'
+  },
+  // aqui termina inp con icon
+
   titulo: {
     fontSize: 70,
     color: '#000',
@@ -106,28 +120,27 @@ const styles = StyleSheet.create({
 
   subtitule: {
     fontSize: 20,
-    color: '#c79556',
+    color: '#936037',
+    paddingBottom: 10,
   },
 
   subtitule2: {
     fontSize: 18,
-    color: '#c79556',
-    paddingEnd: 210,
-    paddingTop: 10,
-
+    color: '#936037',
+    paddingTop: 8,
+    flex: 1,
+    paddingHorizontal: 5,
   },
 
   textInput: {
-    padding: 10,
-    paddingStart: 30,
-    borderColor: '#936037',
-    borderWidth: 1,
-    width: '80%',
-    height: 40,
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: '90%',
     marginTop: 15,
-    marginRight:'4%',
-    marginLeft:'4%',
-    borderRadius: 4,
+    paddingHorizontal: 3,
+    height: 40,
+    marginRight: '4%',
+    marginLeft: '4%',
     // backgroundColor: '#f9dcb7',
   },
 
@@ -139,17 +152,17 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#c79556",
     padding: 7,
-    marginTop: 30,
+    marginTop: 15,
     marginBottom: 20,
     borderRadius: 4,
-    width: '80%',
+    width: '90%',
 
   },
 
   buttont: {
     backgroundColor: "#785a35",
     padding: 5,
-    marginTop: 10,
+    marginTop: 15,
     borderRadius: 4,
     width: '45%',
   },
@@ -158,4 +171,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white'
   },
+
 });
